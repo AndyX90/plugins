@@ -119,4 +119,16 @@
     <type>dropdown</type>
     <help>Defines the OSPF network type, impacting adjacency and LSA flooding methods. "Broadcast Multi-Access": Assumes networks supporting multiple routers with broadcast capability (e.g., Ethernet). "Non-Broadcast Multi-Access (NBMA)"": For networks without broadcast support (e.g., Frame Relay); requires manual neighbor setup. "Point-to-Multipoint": Connects multiple routers over a single interface, treating each as a point-to-point link. "Point-to-Point": Directly connects two routers, simplifying adjacency and LSA transmission.</help>
   </field>
+  <field>
+    <id>interface.disablemulticasthello</id>
+    <label>Disable Multicast Hello</label>
+    <type>checkbox</type>
+    <help>Only in PtP/PtMP mode. Disables sending normal multicast hellos when in PtP/PtMP mode. Some vendors do this automatically for PtMP mode while others have a separate no-broadcast option matching this. If this setting is used, you must configure neighbors with poll-interval (1-65535) for each neighbor to send unicast hello packets.</help>
+  </field>
+  <field>
+    <id>interface.configneighborsonly</id>
+    <label>Configure Neighbors Only</label>
+    <type>checkbox</type>
+    <help>Only in PtP/PtMP mode. Only form adjacencies with neighbors that are explicitly configured. Hellos from other routers are ignored.</help>
+  </field>
 </form>

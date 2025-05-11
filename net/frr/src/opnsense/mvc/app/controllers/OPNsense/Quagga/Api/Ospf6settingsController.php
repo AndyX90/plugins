@@ -41,6 +41,26 @@ class Ospf6settingsController extends ApiMutableModelControllerBase
     protected static $internalModelName = 'ospf6';
     protected static $internalModelClass = '\OPNsense\Quagga\OSPF6';
 
+    public function searchNeighborAction()
+    {
+        return $this->searchBase('neighbors.neighbor');
+    }
+    public function getNeighborAction($uuid = null)
+    {
+        return $this->getBase('neighbor', 'neighbors.neighbor', $uuid);
+    }
+    public function addNeighborAction()
+    {
+        return $this->addBase('neighbor', 'neighbors.neighbor');
+    }
+    public function delNeighborAction($uuid)
+    {
+        return $this->delBase('neighbors.neighbor', $uuid);
+    }
+    public function setNeighborAction($uuid)
+    {
+        return $this->setBase('neighbor', 'neighbors.neighbor', $uuid);
+    }
     public function searchNetworkAction()
     {
         return $this->searchBase('networks.network');
@@ -120,6 +140,10 @@ class Ospf6settingsController extends ApiMutableModelControllerBase
     public function setRoutemapAction($uuid)
     {
         return $this->setBase('routemap', 'routemaps.routemap', $uuid);
+    }
+    public function toggleNeighborAction($uuid)
+    {
+        return $this->toggleBase('neighbors.neighbor', $uuid);
     }
     public function toggleNetworkAction($uuid)
     {

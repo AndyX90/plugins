@@ -46,6 +46,15 @@
             }
         });
 
+
+        $("#{{formGridEditOSPF6Neighbor['table_id']}}").UIBootgrid({
+            'search':'/api/quagga/ospf6settings/search_neighbor',
+            'get':'/api/quagga/ospf6settings/get_neighbor/',
+            'set':'/api/quagga/ospf6settings/set_neighbor/',
+            'add':'/api/quagga/ospf6settings/add_neighbor/',
+            'del':'/api/quagga/ospf6settings/del_neighbor/',
+            'toggle':'/api/quagga/ospf6settings/toggle_neighbor/'
+        });
         $("#{{formGridEditNetwork['table_id']}}").UIBootgrid({
             'search':'/api/quagga/ospf6settings/searchNetwork',
             'get':'/api/quagga/ospf6settings/getNetwork/',
@@ -126,6 +135,7 @@
 <!-- Navigation bar -->
 <ul class="nav nav-tabs" data-tabs="tabs" id="maintabs">
     <li class="active"><a data-toggle="tab" href="#general">{{ lang._('General') }}</a></li>
+    <li><a data-toggle="tab" href="#neighbors">{{ lang._('Neighbors') }}</a></li>
     <li><a data-toggle="tab" href="#networks">{{ lang._('Networks') }}</a></li>
     <li><a data-toggle="tab" href="#interfaces">{{ lang._('Interfaces') }}</a></li>
     <li><a data-toggle="tab" href="#prefixlists">{{ lang._('Prefix Lists') }}</a></li>
@@ -136,6 +146,10 @@
     <div id="general" class="tab-pane fade in active">
         {{ partial("layout_partials/base_form",['fields':ospf6Form,'id':'frm_ospf6_settings'])}}
         {{ partial('layout_partials/base_bootgrid_table', formGridEditRedistribution)}}
+    </div>
+    <!-- Tab: Neighbors -->
+    <div id="neighbors" class="tab-pane fade in">
+        {{ partial('layout_partials/base_bootgrid_table', formGridEditOSPF6Neighbor)}}
     </div>
     <!-- Tab: Networks -->
     <div id="networks" class="tab-pane fade in">
@@ -155,6 +169,7 @@
     </div>
 </div>
 {{ partial('layout_partials/base_apply_button', {'data_endpoint': '/api/quagga/service/reconfigure', 'data_service_widget': 'quagga'}) }}
+{{ partial("layout_partials/base_dialog",['fields':formDialogEditOSPF6Neighbor,'id':formGridEditOSPF6Neighbor['edit_dialog_id'],'label':lang._('Edit Neighbor')])}}
 {{ partial("layout_partials/base_dialog",['fields':formDialogEditNetwork,'id':formGridEditNetwork['edit_dialog_id'],'label':lang._('Edit Network')])}}
 {{ partial("layout_partials/base_dialog",['fields':formDialogEditInterface,'id':formGridEditInterface['edit_dialog_id'],'label':lang._('Edit Interface')])}}
 {{ partial("layout_partials/base_dialog",['fields':formDialogEditPrefixLists,'id':formGridEditPrefixLists['edit_dialog_id'],'label':lang._('Edit Prefix Lists')])}}

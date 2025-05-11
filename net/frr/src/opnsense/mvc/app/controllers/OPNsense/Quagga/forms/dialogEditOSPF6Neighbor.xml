@@ -1,0 +1,36 @@
+<form>
+  <field>
+    <id>neighbor.enabled</id>
+    <label>Enabled</label>
+    <type>checkbox</type>
+    <grid_view>
+      <width>6em</width>
+      <type>boolean</type>
+      <formatter>rowtoggle</formatter>
+    </grid_view>
+  </field>
+  <field>
+    <id>neighbor.description</id>
+    <label>Description</label>
+    <type>text</type>
+    <help>Optional description for the neighbor.</help>
+  </field>
+  <field>
+    <id>neighbor.address</id>
+    <label>Peer-IP</label>
+    <type>text</type>
+    <help>Specify the IP address of the OSPF neighbor.</help>
+  </field>
+  <field>
+    <id>neighbor.pollinterval</id>
+    <label>Poll-Interval</label>
+    <type>text</type>
+    <help>Send unicast hellos to this neighbor at the specified interval (in seconds.) The interval is only used while there is no adjacency with this neighbor. As soon as an adjacency is formed, the interface’s ipv6 ospf6 hello-interval HELLOINTERVAL value is used.</help>
+  </field>
+  <field>
+    <id>neighbor.cost</id>
+    <label>Cost</label>
+    <type>text</type>
+    <help>Use a distinct cost for paths traversing this neighbor. The default is to use the interface’s cost value (which may be automatically calculated based on link bandwidth.) Note that costs are directional in OSPF and the reverse direction must be set on the other router.</help>
+  </field>
+</form>

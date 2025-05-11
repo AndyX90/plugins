@@ -76,6 +76,30 @@
                         </linkedPrefixlistOut>
                 </network>
         </networks>
+        <neighbors>
+                <neighbor type="ArrayField">
+                        <enabled type="BooleanField">
+                                <default>1</default>
+                                <Required>Y</Required>
+                        </enabled>
+                        <description type="DescriptionField">
+                                <Required>N</Required>
+                        </description>
+                        <address type="NetworkField">
+                                <Required>Y</Required>
+                        </address>
+                        <pollinterval type="IntegerField">
+                                <Required>N</Required>
+                                <MinimumValue>1</MinimumValue>
+                                <MaximumValue>65535</MaximumValue>
+                        </pollinterval>
+                        <cost type="IntegerField">
+                                <Required>N</Required>
+                                <MinimumValue>1</MinimumValue>
+                                <MaximumValue>65535</MaximumValue>
+                        </cost>
+                </neighbor>
+        </neighbors>
         <interfaces>
                 <interface type="ArrayField">
                         <enabled type="BooleanField">
@@ -139,8 +163,11 @@
                                 <OptionValues>
                                         <broadcast>Broadcast multi-access network</broadcast>
                                         <point-to-point>Point-to-point network</point-to-point>
+                                        <point-to-multipoint>Point-to-multipoint network</point-to-multipoint>
                                 </OptionValues>
                         </networktype>
+                        <disablemulticasthello type="BooleanField"/>
+                        <configneighborsonly type="BooleanField"/>
                 </interface>
         </interfaces>
         <prefixlists>
